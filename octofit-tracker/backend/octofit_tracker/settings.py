@@ -37,6 +37,10 @@ if os.environ.get('CODESPACE_NAME'):
     codespace_name = os.environ.get('CODESPACE_NAME')
     CSRF_TRUSTED_ORIGINS.append(f"https://{codespace_name}-8000.app.github.dev")
 
+# Use X-Forwarded-Host header for Codespace URL detection
+USE_X_FORWARDED_HOST = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 # Application definition
 
 INSTALLED_APPS = [
